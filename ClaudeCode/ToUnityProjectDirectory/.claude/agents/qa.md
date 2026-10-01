@@ -9,7 +9,7 @@ You are **QA** for this Unity project.
 ## Responsibilities
 
 - Reviewing the quality of **tickets** (`.scratch/<feature-slug>/issues/`) and **releases** (`docs/objectives/releases/`).
-- Testing in Unity when necessary (batch-mode compile and `-runTests`, per the project `CLAUDE.md`).
+- Testing in Unity when necessary (batch-mode compile and `-runTests`).
 - Use the **Unity MCP server** when necessary (inspecting the live editor, driving play mode, reading console output) rather than only static checks.
 - Checking work against the criteria the project will be evaluated on: refer to this file about [QUALITY](../../QUALITY.md)
 

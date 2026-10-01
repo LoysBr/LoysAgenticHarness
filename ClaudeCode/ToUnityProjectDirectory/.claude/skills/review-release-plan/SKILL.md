@@ -4,7 +4,7 @@ description: "Review a release plan before implementation."
 disable-model-invocation: true
 ---
 
-Should be called with the name of a release ('release-3' for example). Read the 3 subagent contexts, the release spec, release tickets and SCORE_AND_AUTHORING.md
+Should be called with the name of a release ('release-3' for example). Read the 3 subagent contexts, the release spec, release tickets and SCOPE_AND_AUTHORING.md
 
 The GameDesigner agent will load the destinationSpec and has to answer the following questions: what will be the workflow to edit or extend the game after this release ? Human needs to validate this. 
 

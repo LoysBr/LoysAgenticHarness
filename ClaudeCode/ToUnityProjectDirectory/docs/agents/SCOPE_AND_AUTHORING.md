@@ -4,7 +4,31 @@ Read this before a release plan review, before cutting scope, before
 adding any generated content, and before deciding where a system's
 numbers live.
 
-Terms are defined in [CONTEXT.md](../../CONTEXT.md).
+This project's terms are defined in [CONTEXT.md](../../CONTEXT.md).
+
+> **Example project — not this project.** Every example below comes from *The
+> Conformist Test*, an earlier Unity prototype. The lessons carry over; the names
+> do not. None of them belong to this project's glossary.
+>
+> - **The game:** a greybox isometric city block, the **District**, where a crowd of
+>   150 NPCs lives while the Player walks among them by clicking. It shipped in
+>   numbered **Releases** (Release 3, Release 4…).
+> - **Factions:** each NPC is Red, Blue or Green, shown as body colour. An
+>   **AreaLean** is a box over part of the District that pulls NPCs of one Faction
+>   toward it; the **Clustering** dial sets how strongly.
+> - **Behaviours:** an NPC runs one at a time — walking a **Route** (a line of
+>   waypoints), **Chatting** at a ChattingSpot, **Watching** at a WatchingSpot, or
+>   Idle. A **Spot** is a placed object with standing places. When a Behaviour ends,
+>   the NPC picks the next one. **Gestures** are short animations it plays meanwhile.
+> - **Populate** spawns the crowd once, when Play starts.
+> - **Settings:** `BehaviourSettings` (what a kind of person is like — Behaviour
+>   weights and durations) and `CrowdSettings` (what crowd fills the District — size,
+>   Faction mix, Clustering, Seed). An **NPCTemplate** defines a kind of NPC and
+>   names a `BehaviourSettings`.
+> - **Modules:** **AmbientLife** (Behaviours and picking them) and **Crowd** (crowd
+>   settings and Populate); AmbientLife must not depend on Crowd.
+> - **Debug labels** above each NPC show its Behaviour and, in a short phrase, why
+>   it was picked.
 
 ---
 
@@ -17,7 +41,7 @@ When a release is over budget, these are the cuts to reach for, in this order.
 The feature stays; the number of ways it can vary goes to one.
 
 > Release 3 shipped ChattingSpot and WatchingSpot as real, separate types — but
-> deleted authored Slots. Capacity became **fixed by the kind** (5 and 1) rather
+> deleted authored Slots (the individual standing places inside a Spot). Capacity became **fixed by the kind** (5 and 1) rather
 > than authored per Spot. The conversation still reads as a conversation; there is
 > simply nothing inside a Spot to configure.
 
@@ -46,8 +70,16 @@ nobody has tuned yet is a guess with an Inspector around it. Where it is promote
 
 ### 3. Keep the seam, cut the implementation
 
-Never remove the extension point — that is what the project is selling. Remove
-what is behind it.
+Never remove the extension point — it is what lets the next feature arrive
+without a rewrite. Remove what is behind it.
+
+> For example, during Release 3 implementation, user chose to keep `mixByKind` (Release 4's dials) and `SpotIndex`
+> (Release 4's AreaLeans) even though both are inert in Release 3. Five minutes
+> now against an hour of rewriting later.
+>
+> Similarly, collapsing ChattingSpot and WatchingSpot into one class with a
+> `SpotKind` enum would have saved ~15 minutes and cost the entire
+> extensibility story. Rejected.
 
 ### 4. A logging stub is a legitimate implementation
 
@@ -87,8 +119,8 @@ does not work is not.
 
 ### 7. Everything cut goes to `docs/objectives/outOfScope.md`, with its reasoning
 
-A cut with a written price is Report material — "what the next one costs" quotes
-real estimates. A cut that is merely forgotten is a gap.
+A cut with a written price can be quoted when someone asks what the next feature
+costs — a real estimate, not a guess. A cut that is merely forgotten is a gap.
 
 The list is only worth quoting while it is true, so when a cut later ships, say so
 on its row in the same pass. An entry still claiming a delivered thing is missing
@@ -106,8 +138,8 @@ Example:
 > number of Slots *is* the capacity"). It was rewritten to "derived from the Spot,
 > not authored" in the same edit, not left to rot.
 >
-> Release 4 retired the word *Sandbox* from the glossary. The module was called
-> `CityBox.Sandbox`, so the rename went with it — four files, about ten minutes.
+> Release 4 retired the word *Sandbox* from the glossary. A code module was still
+> named `Sandbox`, so the rename went with it — four files, about ten minutes.
 > A module named after a term the project no longer uses is a trap for the next
 > reader, who has to work out whether it means something.
 
@@ -134,6 +166,12 @@ field, not written into an asset by an editor pass. The scene is edited with
 ordinary handles by definition ([Part 2](#part-2--the-scene-authoring-loop)) — so
 a stored derivation is a value that goes silently wrong the moment the designer
 does the thing the tool was built for.
+
+> Release 4 scores each Route by how much of it lies inside an AreaLean. Storing
+> that score at build time was the obvious optimisation and was rejected: the
+> release's own headline manual test is *resize an AreaLean with the scale handle*,
+> which is exactly the edit that would invalidate it, with no error and no visible
+> symptom — the crowd would simply keep obeying the old political map.
 
 Write it as **one pure function with several callers** — the gizmo on every
 repaint, Populate once, the decision every time — so what the designer sees drawn
@@ -200,10 +238,7 @@ makes the promotion cheap is that nothing moves — see the shape below.
    `[Tooltip]` in the designer's words and a `[Min]`/range guard; the same plain
    language standard as [rule 9](#9-debug-text-is-a-designer-facing-api--write-it-as-one).
    A field a designer cannot act on without asking what it means is not finished.
-7. **It is generated get-or-create, so it needs the additive ensure-pass**  A weight the designer sets to zero survives
-   the pass; a Behaviour added by a later release is appended to an asset written
-   before it existed.
-8. **A dial goes on the asset the designer would look in, and the module that needs
+7. **A dial goes on the asset the designer would look in, and the module that needs
    it reaches for it through a narrow interface.** Decide the file by asking where
    the User would go looking, not by which module happens to read the number — Release
    4's Clustering sits on `CrowdSettings` beside Crowd Size and Faction Mix, because
@@ -212,7 +247,8 @@ makes the promotion cheap is that nothing moves — see the shape below.
    the one-value interface and `CrowdSettings` implements it, the same shape as
    `IGesturePlayer`. About twelve minutes, and it keeps the module graph acyclic
    without making the designer hunt.
-9. **Two assets is the ceiling before they need a sentence telling them apart.**
-   `BehaviourSettings` is *what a kind of person is like*; `CrowdSettings` is *what
-   crowd fills the District*. If a proposed third asset cannot be added to that
-   sentence in a clause, it is a field on one of the existing two.
+8. **One sentence must tell every settings asset apart.** Write that sentence
+   down; a proposed new asset that cannot be added to it in a clause is a field on
+   an existing one. In the example project: `BehaviourSettings` is
+   *what a kind of person is like*; `CrowdSettings` is *what crowd fills the
+   District*.

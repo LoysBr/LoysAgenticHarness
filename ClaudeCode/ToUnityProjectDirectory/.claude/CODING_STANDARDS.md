@@ -113,8 +113,8 @@ Within the method groups above, order methods by **call sequence** so the code r
 - Use `[SerializeField]` for editor-exposed private fields
 
   ```csharp
-  [SerializeField] private float moveSpeed = 5f;
-  [SerializeField] private Transform targetTransform;
+  [SerializeField] private float m_moveSpeed = 5f;
+  [SerializeField] private Transform m_targetTransform;
   ```
 
 ### Component Caching
@@ -141,14 +141,6 @@ Within the method groups above, order methods by **call sequence** so the code r
 
 - Use layer masks and tag comparisons with constants, not magic strings
 
-  ```csharp
-  // Good
-  if (gameObject.CompareTag("Player"))
-  
-  // Avoid
-  if (gameObject.tag == "Player")
-  ```
-
 ## Method Size & Complexity
 
 - Keep methods under 50 lines when possible
@@ -165,11 +157,11 @@ Within the method groups above, order methods by **call sequence** so the code r
   ```csharp
   // Good: explains the reason
   // Cache transform to avoid GetComponent overhead each frame
-  private Transform _cachedTransform;
+  private Transform m_cachedTransform;
   
   // Avoid: obvious what the code does
   // Get the cached transform
-  return _cachedTransform;
+  return m_cachedTransform;
   ```
 
 ## Code Quality

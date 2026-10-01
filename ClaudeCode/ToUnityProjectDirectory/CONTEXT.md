@@ -1,6 +1,6 @@
 # Your Unity Project
 
-Describe your context here.
+Describe your context here. Everything related to the project should be here. There is also a big part "Language" about the Domain's vocabulary and terms.
 Use [CONTEXT_SKILLS.md](.claude/CONTEXT_SKILLS.md) to know the concepts used by skills and user.
 
 ## Target platform

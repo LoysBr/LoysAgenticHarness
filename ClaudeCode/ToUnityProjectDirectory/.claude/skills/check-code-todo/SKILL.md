@@ -6,11 +6,11 @@ allowed-tools: [Grep]
 
 # Check Code TODO
 
-Scan all C# files designated in `.claude/SCRIPTS_IN_SCOPE.md`
+Scan all C# files designated in [`.claude/SCRIPTS_IN_SCOPE.md`](../../SCRIPTS_IN_SCOPE.md)
 
 ## Instructions
 
-1. Use Grep to search for `TODO` (case-insensitive) across all files designated in `.claude/SCRIPTS_IN_SCOPE.md`
+1. Use Grep to search for `TODO` (case-insensitive) across all files designated in [`.claude/SCRIPTS_IN_SCOPE.md`](../../SCRIPTS_IN_SCOPE.md)
 2. Present the results grouped by file, with the line number and the full comment text for each hit.
 3. If no TODOs are found, say so clearly.
 

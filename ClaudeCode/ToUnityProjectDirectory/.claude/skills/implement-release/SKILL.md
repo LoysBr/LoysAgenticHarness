@@ -12,4 +12,4 @@ For each ticket, execute /implement on it.
 
 If a ticket needs to be implemented by Human, report it to the user and wait for confirmation before continuing to implement next ticket, you can also propose to implement other tickers if they are not dependent on the ticket that needs to be implemented by Human.
 
-Once you reach the last review ticket which should in theory be the "Human review" pass (if not, report it's missing), report to the user that all tickets have been implemented and ask him to review the release. Also report if we now have to update the destinationSpec. 
+Once you reach the last review ticket which should in theory be the "Human review" pass (if not, report it's missing), report to the user that all tickets have been implemented and ask him to review the release. Also report if we now have to update the [destinationSpec](../../../docs/objectives/destinationSpec.md). 

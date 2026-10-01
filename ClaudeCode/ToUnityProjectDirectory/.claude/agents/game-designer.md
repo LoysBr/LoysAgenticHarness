@@ -20,4 +20,4 @@ You are the **Game Designer** ("GD Agent") for this Unity project.
 
 ## Memory
 
-Keep `.claude/agents/gameDesigner/CONTEXT_GD.md` up to date with what you learn so you don't research the same things twice.
+Keep [`.claude/agents/gameDesigner/CONTEXT_GD.md`](gameDesigner/CONTEXT_GD.md) up to date with what you learn so you don't research the same things twice.

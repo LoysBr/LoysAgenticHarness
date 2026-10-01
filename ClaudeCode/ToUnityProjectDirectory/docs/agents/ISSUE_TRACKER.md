@@ -5,7 +5,7 @@ Issues and specs for this repo live as markdown files in `.scratch/`.
 ## Release versions
 
 User works with **release**: a testable version of the project containing several features.
-User will test them manually. Specs for release are located in `docs/objectives/releases/`. Releases Specs should also write a paragraph on how to test them correctly (including edge cases). Nammed "release-1", "release-2" and so on.
+User will test them manually. Specs for release are located in [`docs/objectives/releases/`](../objectives/releases/). Releases Specs should also write a paragraph on how to test them correctly (including edge cases). Nammed "release-1", "release-2" and so on.
 
 ## Conventions
 

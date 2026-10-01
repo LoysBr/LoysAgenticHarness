@@ -29,4 +29,4 @@ Whether it is clear what is happening in the game and why, without reading the s
 
 ## Art pipeline fluency
 
-Deliberate import configuration, and the ability to diagnose a broken asset rather than work around it. Should be detailed in `docs/howTo/assetsPipeline.md`.
+Deliberate import configuration, and the ability to diagnose a broken asset rather than work around it. Should be detailed in [`docs/howTo/assetsPipeline.md`](../docs/howTo/assetsPipeline.md).

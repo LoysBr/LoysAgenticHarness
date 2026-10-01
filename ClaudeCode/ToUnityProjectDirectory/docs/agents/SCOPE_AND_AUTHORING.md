@@ -117,7 +117,7 @@ effect to land in, or suggest the human to check if content is relevant / enough
 Distinguish *scope* from *correctness*. Scope is negotiable; a thing that silently
 does not work is not.
 
-### 7. Everything cut goes to `docs/objectives/outOfScope.md`, with its reasoning
+### 7. Everything cut goes to [`docs/objectives/outOfScope.md`](../objectives/outOfScope.md), with its reasoning
 
 A cut with a written price can be quoted when someone asks what the next feature
 costs — a real estimate, not a guess. A cut that is merely forgotten is a gap.
@@ -127,11 +127,11 @@ on its row in the same pass. An entry still claiming a delivered thing is missin
 costs more credibility than the entry ever bought.
 
 **A promise withdrawn is not the same as a promise deferred, and must not be filed
-as one.** When something the destinationSpec committed to is decided against
+as one.** When something the [destinationSpec](../objectives/destinationSpec.md) committed to is decided against
 outright, record it as *withdrawn*, with what replaced it and what the replacement costs. "Later" implies it is still wanted;
 saying so when it is not is the version of this list that stops being read.
 
-### 8. When a simplification invalidates the glossary, fix `CONTEXT.md` **and the code identifiers** in the same pass
+### 8. When a simplification invalidates the glossary, fix [`CONTEXT.md`](../../CONTEXT.md) **and the code identifiers** in the same pass
 
 Example:
 > Deleting authored Slots made the `Slot` entry wrong ("an ordered list… the

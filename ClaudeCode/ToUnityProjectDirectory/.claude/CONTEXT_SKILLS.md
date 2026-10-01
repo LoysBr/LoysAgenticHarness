@@ -4,7 +4,7 @@ This will describe the terms and concept Claude will use in his skills and opera
 
 ## Reporting design decisions and "how-to" explainations
 
-`docs/howTo/assetsPipeline.md` file will be used only to talk about the 3D assets pipeline. You can write it in.
+[`docs/howTo/assetsPipeline.md`](../docs/howTo/assetsPipeline.md) file will be used only to talk about the 3D assets pipeline. You can write it in.
 
 ## Files in the Scope
 

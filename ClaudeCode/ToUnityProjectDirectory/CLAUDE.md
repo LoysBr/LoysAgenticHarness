@@ -18,16 +18,16 @@ Markdown and text documents are named by audience:
   **UPPER_SNAKE_CASE**: `CLAUDE.md`, `CODING_STANDARDS.md`, `CONTEXT_QA.md`.
 
 Exceptions that keep their conventional name: `README.md`; agent definition
-files in `.claude/agents/` (kebab-case, matching the agent name); skill files
-(`SKILL.md` and siblings); ADR files under `docs/adr/` (`NNNN-kebab-title.md`).
+files in [`.claude/agents/`](.claude/agents/) (kebab-case, matching the agent name); skill files
+(`SKILL.md` and siblings); ADR files under [`docs/adr/`](docs/adr/) (`NNNN-kebab-title.md`).
 
 ## Subagents definition
 
-3 Subagents roles are defined in `.claude/agents/` :
+3 Subagents roles are defined in [`.claude/agents/`](.claude/agents/) :
 
-- `.claude/agents/game-designer.md` : **Game Designer** (memory: `.claude/agents/gameDesigner/CONTEXT_GD.md`)
-- `.claude/agents/programmer.md` : **Programmer** (memory: `.claude/agents/programmer/CONTEXT_PROGRAMMER.md`)
-- `.claude/agents/qa.md` : **QA** (memory: `.claude/agents/QA/CONTEXT_QA.md`)
+- [`.claude/agents/game-designer.md`](.claude/agents/game-designer.md) : **Game Designer** (memory: [`.claude/agents/gameDesigner/CONTEXT_GD.md`](.claude/agents/gameDesigner/CONTEXT_GD.md))
+- [`.claude/agents/programmer.md`](.claude/agents/programmer.md) : **Programmer** (memory: [`.claude/agents/programmer/CONTEXT_PROGRAMMER.md`](.claude/agents/programmer/CONTEXT_PROGRAMMER.md))
+- [`.claude/agents/qa.md`](.claude/agents/qa.md) : **QA** (memory: [`.claude/agents/QA/CONTEXT_QA.md`](.claude/agents/QA/CONTEXT_QA.md))
 
 Please use them correctly when you think you can use them in parallel. Each keeps its own **context file** as a memory to save effort between different sessions.
 
@@ -42,15 +42,15 @@ Whenever you need to "explore the codebase", first check only the scripts (execu
 How to simplify a release when it is over budget, and how generated content, editable settings and
 hand-authored scene content fit together.
 Read before a plan review, before cutting scope, and before adding any generated
-content: `docs/agents/SCOPE_AND_AUTHORING.md`.
+content: [`docs/agents/SCOPE_AND_AUTHORING.md`](docs/agents/SCOPE_AND_AUTHORING.md).
 
 ### Issue tracker
 
-Issues and specs live as local markdown files under `.scratch/<feature-slug>/`. See `docs/agents/ISSUE_TRACKER.md`.
+Issues and specs live as local markdown files under `.scratch/<feature-slug>/`. See [`docs/agents/ISSUE_TRACKER.md`](docs/agents/ISSUE_TRACKER.md).
 
 ### Domain docs
 
-Single-context: `CONTEXT.md` at the repo root plus `docs/adr/`. See `docs/agents/DOMAIN.md`.
+Single-context: [`CONTEXT.md`](CONTEXT.md) at the repo root plus [`docs/adr/`](docs/adr/). See [`docs/agents/DOMAIN.md`](docs/agents/DOMAIN.md).
 
 ### Release docs
 
@@ -58,7 +58,7 @@ Release specs live as local markdown files under `docs/objectives/releases/<rele
 
 ### Assets Pipeline
 
-Store Assets pipeline decisions into `docs/howTo/assetsPipeline.md`. Write in a clear and concise way, it should be read by the person judging my work.
+Store Assets pipeline decisions into [`docs/howTo/assetsPipeline.md`](docs/howTo/assetsPipeline.md). Write in a clear and concise way, it should be read by the person judging my work.
 
 ## Scope of a request
 
@@ -97,4 +97,4 @@ The project uses the **new Input System exclusively** (`activeInputHandler: 1` â
 
 ## Color palette
 
-Whenever you need to use colors check file [loysColorblindPalette](../../../docs/loysColorblindPalette.md)
+Whenever you need to use colors check file [loysColorblindPalette](docs/loysColorblindPalette.md)

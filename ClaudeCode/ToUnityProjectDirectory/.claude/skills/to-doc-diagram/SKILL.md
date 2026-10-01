@@ -11,9 +11,9 @@ I would like you to represent informations about code classes, architecture, and
 To make things visually catchy, you can use colors, shapes, and arrows to represent different types of relationships and interactions between classes. 
 
 There are 4 categories of documentation diagrams you can generate:
-- anything aiming to be read by a non programmer and describing the game, located in `doc\gameSystems\` 
-- anything aiming to be read by a non programmer and explaining a workflow or a process, located in `doc\howTo\` 
-- for programmers, some high level architecture presentation, located in Script folder: `Assets\Scripts\Documentation~\`
-- for programmers, something more specific to a module, located in the module folder: `Assets\Scripts\Runtime\TheModuleName\Documentation~\`
+- anything aiming to be read by a non programmer and describing the game, located in [`docs/gameSystems/`](../../../docs/gameSystems/) 
+- anything aiming to be read by a non programmer and explaining a workflow or a process, located in [`docs/howTo/`](../../../docs/howTo/) 
+- for programmers, some high level architecture presentation, located in Script folder: `Assets/Scripts/Documentation~/`
+- for programmers, something more specific to a module, located in the module folder: `Assets/Scripts/Runtime/TheModuleName/Documentation~/`
 
 For the colors used check the [loysColorblindPalette](../../../docs/loysColorblindPalette.md) file.

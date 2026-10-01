@@ -1,0 +1,5 @@
+interface:
+  display_name: "To Doc Diagram"
+  short_description: "From a chat or an implementation, generate an explanation diagram in a png/svg/jpg format."
+policy:
+  allow_implicit_invocation: true

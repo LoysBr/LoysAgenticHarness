@@ -1,0 +1,5 @@
+interface:
+  display_name: "Review Release Plan"
+  short_description: "Before implementing a Release, check if  the Plan is solid and matches our latest design decisions."
+policy:
+  allow_implicit_invocation: false

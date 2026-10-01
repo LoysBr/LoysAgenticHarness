@@ -1,0 +1,96 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Coding Convention
+
+Check [Coding Standards](.claude/CODING_STANDARDS.md) to know about how to write code.
+
+## Document naming
+
+Markdown and text documents are named by audience:
+
+- **Human-facing** documents — design docs, specs, reports, pipeline notes, plans:
+  anything written to be read by a person (especially the evaluator) — use
+  **camelCase**: `destinationSpec.md`, `pipeline.md`.
+- **Claude-facing** documents — instructions, context/memory files, conventions,
+  agent workflow guides: anything written primarily for Claude to consume — use
+  **UPPER_SNAKE_CASE**: `CLAUDE.md`, `CODING_STANDARDS.md`, `CONTEXT_QA.md`.
+
+Exceptions that keep their conventional name: `README.md`; agent definition
+files in `.claude/agents/` (kebab-case, matching the agent name); skill files
+(`SKILL.md` and siblings); ADR files under `docs/adr/` (`NNNN-kebab-title.md`).
+
+## Subagents definition
+
+3 Subagents roles are defined in `.claude/agents/` :
+
+- `.claude/agents/game-designer.md` : **Game Designer** (memory: `.claude/agents/gameDesigner/CONTEXT_GD.md`)
+- `.claude/agents/programmer.md` : **Programmer** (memory: `.claude/agents/programmer/CONTEXT_PROGRAMMER.md`)
+- `.claude/agents/qa.md` : **QA** (memory: `.claude/agents/QA/CONTEXT_QA.md`)
+
+Please use them correctly when you think you can use them in parallel. Each keeps its own **context file** as a memory to save effort between different sessions.
+
+## Agent skills
+
+### Exploring Codebase
+
+Whenever you need to "explore the codebase", first check only the scripts (execute /read-scripts), and if you need more then check other assets.
+
+### Scope cuts and scene authoring
+
+How to simplify a release when it is over budget, and how generated content and
+hand-authored scene content fit together (the seed → edit → transcribe-back loop).
+Read before a plan review, before cutting scope, and before adding any generated
+content to the District: `docs/agents/SCOPE_AND_AUTHORING.md`.
+
+### Issue tracker
+
+Issues and specs live as local markdown files under `.scratch/<feature-slug>/`. See `docs/agents/ISSUE_TRACKER.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` at the repo root plus `docs/adr/`. See `docs/agents/DOMAIN.md`.
+
+### Release docs
+
+Release specs live as local markdown files under `docs/objectives/releases/<release-01>/`.
+
+### Assets Pipeline
+
+Store Assets pipeline decisions into `docs/howTo/assetsPipeline.md`. Write in a clear and concise way, it should be read by the person judging my work.
+
+## Scope of a request
+
+Do what was asked. Nothing beyond it.
+
+- Stop as soon as the user's question is answered. Do not keep digging to make the
+  answer richer or more complete.
+- If something is broken or failing, report the failure and stop. Do not investigate
+  the cause, read config, or look for a fix unless the user asks why, or asks you to
+  fix it.
+- "Check X", "can you X", "does X work" are questions. They are not requests to
+  repair X.
+- If you spot something else worth doing, say it in one line and stop. The user
+  decides whether it happens.
+
+A one-line suggestion is always preferred over unrequested action.
+
+## Git flow policy
+
+We are using "git flow" : the master branch receives only new versions in an acceptable state, branch development is used to change the project, but each issue / ticket is usually done its own branch `development/332-issueName`. Always ask confirmation before committing or pushing to git.
+
+## Working with Unity from the CLI
+
+To be defined, depending on the machine and Unity Editor installation.
+
+## Input
+
+The project uses the **new Input System exclusively** (`activeInputHandler: 1` — the legacy `Input.GetAxis`/`Input.GetKey` API is disabled and will throw at runtime). All bindings live in `Assets/InputSystem_Actions.inputactions`, with `Player` and `UI` action maps and control schemes for Keyboard&Mouse, Gamepad, Touch, Joystick, and XR. Add bindings there rather than polling devices directly, and keep new bindings assigned to the existing schemes so every platform stays covered.
+
+## Unity file conventions
+
+- Every asset has a sibling `.meta` file holding its GUID; references between assets are GUID-based. Move/rename/delete assets and their `.meta` together, or all references to them break. Prefer doing this from inside the editor.
+- `.unity`, `.prefab`, `.asset`, and `.inputactions` files are YAML and are readable/greppable — GUIDs in them can be resolved back to a path by grepping the `guid:` line of `.meta` files.
+- `.gitattributes` marks binary assets for Git LFS and routes YAML assets through `merge=unityyamlmerge` (Unity's SmartMerge — it only takes effect if that mergetool is registered in the local git config; otherwise conflicted scenes/prefabs have to be resolved by hand or in the editor). `Library/`, `Temp/`, `Logs/`, `UserSettings/`, and build output are ignored.
+- The `.csproj`/`.slnx` files at the root are generated by the editor from the asset layout — never hand-edit them; they are regenerated on the next import.

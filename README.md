@@ -2,11 +2,7 @@
 
 After several small projects using Agentic coding workflow (mainly Claude Code so far), I have learned some ways to optimize AI usage. This is the repo where I will store all my reusable skills and harness files.
 
-## Matt Pocock Skills in Unity
-
-I have adopted several [Matt Pocock's skills](https://github.com/mattpocock/skills) and edited them a bit to fit my own needs: making small Unity Projects. The main difference is the organisation of the work in big blocks I call **Releases**.
-
-### Subagents - Simulate a studio
+## Subagents - Simulate a studio
 
 My idea is to simulate game development sprints and use AI **subagents** (a "Game Designer", a "Programmer" and a "QA") to paralellize some tasks, like in a real studio. You can check their config files in `.claude\agents\`
 
@@ -20,7 +16,11 @@ Each writes what it learned into its own file, so nothing is researched twice
 across sessions. That memory is the reason the work sped up rather than slowed
 down across seven days.
 
-## Workflow
+## Matt Pocock Skills in Unity
+
+I have adopted several [Matt Pocock's skills](https://github.com/mattpocock/skills) and edited them a bit to fit my own needs: making small Unity Projects. The main difference is the organisation of the work in big blocks I call **Releases**.
+
+### Workflow
 
 1. Write the [Destination Spec]("UnityProject\docs\objectives\destinationSpec.md") + Define a precise glossary in [CONTEXT.md]("UnityProject\CONTEXT.md")
 2. Divide the work in big Releases (write a Release Plan)
@@ -33,7 +33,7 @@ down across seven days.
 
 ## Glossary
 
-If you already have a sort of design document or just an idea, before writing the Destination Spec you may want to make your concepts clear, both for you and the Agents. Use /grill-with-docs to fill the [CONTEXT.md]("UnityProject\CONTEXT.md"). 
+If you already have a sort of design document or just an idea, before writing the Destination Spec you may want to make your concepts clear, both for you and the Agents. Use **/grill-with-docs** to fill the [CONTEXT.md]("UnityProject\CONTEXT.md"). 
 
 ## Destination Spec
 

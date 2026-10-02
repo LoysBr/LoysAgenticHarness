@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Collaboration Style
+
+- When uncertain about architecture choices or optimisations before writing code, always ask first rather than making assumptions.
+- This applies to: class design, data structures, design patterns, performance trade-offs, and any decision where multiple valid approaches exist.
+- A short question before writing is always preferred over a long rewrite after.
+
 ## Coding Convention
 
 Check [Coding Standards](.claude/CODING_STANDARDS.md) to know about how to write code.
@@ -79,6 +85,8 @@ A one-line suggestion is always preferred over unrequested action.
 ## Git flow policy
 
 We are using "git flow" : the master branch receives only new versions in an acceptable state, branch development is used to change the project, but each issue / ticket is usually done its own branch `development/332-issueName`. Always ask confirmation before committing or pushing to git.
+
+Do not add a `Co-Authored-By: Claude` trailer (or any AI co-author trailer) to commit messages.
 
 ## Working with Unity from the CLI
 
